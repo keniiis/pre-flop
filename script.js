@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const gridContainer = document.querySelector(".grid-container");
     const legendItems = document.querySelectorAll(".legend-item");
-    const actionSelect = document.getElementById("action-select");
-    const positionSelect = document.getElementById("position-select");
 
     const hands = [
         ["AA", "AKs", "AQs", "AJs", "ATs", "A9s", "A8s", "A7s", "A6s", "A5s", "A4s", "A3s", "A2s"],
@@ -36,65 +34,35 @@ document.addEventListener("DOMContentLoaded", () => {
         "A2o": "btn", "K2o": "neu", "Q2o": "neu", "J2o": "neu", "T2o": "neu", "92o": "neu", "82o": "neu", "72o": "neu", "62o": "neu", "52o": "neu", "42o": "neu", "32o": "neu", "22": "hj"
     };
 
-    function displayGrid() {
-        gridContainer.innerHTML = ""; // Clear the grid container
-
-        hands.forEach(row => {
-            row.forEach(hand => {
-                const div = document.createElement("div");
-                div.classList.add("grid-item", colors[hand] || "");
-                div.textContent = hand;
-                gridContainer.appendChild(div);
-            });
+    hands.forEach(row => {
+        row.forEach(hand => {
+            const div = document.createElement("div");
+            div.classList.add("grid-item", colors[hand] || "");
+            div.textContent = hand;
+            gridContainer.appendChild(div);
         });
-
-        const rangeOrder = ["utg", "utg1", "mp", "mp1", "hj", "co", "btn"];
-
-        legendItems.forEach(item => {
-            item.addEventListener("mouseover", () => {
-                const range = item.getAttribute("data-range");
-                const index = rangeOrder.indexOf(range);
-                const rangesToShow = rangeOrder.slice(0, index + 1);
-                document.querySelectorAll(".grid-item").forEach(cell => {
-                    if (rangesToShow.some(r => cell.classList.contains(r))) {
-                        cell.classList.remove("dimmed");
-                    } else {
-                        cell.classList.add("dimmed");
-                    }
-                });
-            });
-
-            item.addEventListener("mouseout", () => {
-                document.querySelectorAll(".grid-item").forEach(cell => {
-                    cell.classList.remove("dimmed");
-                });
-            });
-        });
-    }
-
-    actionSelect.addEventListener("change", (event) => {
-        const selectedAction = event.target.value;
-        if (selectedAction === "rfi") {
-            positionSelect.disabled = false;
-        } else {
-            positionSelect.disabled = true;
-            gridContainer.innerHTML = ""; // Clear the grid container if action is not RFI
-        }
     });
 
-    positionSelect.addEventListener("change", (event) => {
-        const selectedPosition = event.target.value;
-        if (selectedPosition !== "default") {
-            displayGrid();
+    const rangeOrder = ["utg", "utg1", "mp", "mp1", "hj", "co", "btn"];
+
+    legendItems.forEach(item => {
+        item.addEventListener("mouseover", () => {
+            const range = item.getAttribute("data-range");
+            const index = rangeOrder.indexOf(range);
+            const rangesToShow = rangeOrder.slice(0, index + 1);
             document.querySelectorAll(".grid-item").forEach(cell => {
-                if (!cell.classList.contains(selectedPosition)) {
+                if (rangesToShow.some(r => cell.classList.contains(r))) {
+                    cell.classList.remove("dimmed");
+                } else {
                     cell.classList.add("dimmed");
                 }
             });
-        } else {
-            gridContainer.innerHTML = ""; // Clear the grid container if position is not selected
-        }
-    });
+        });
 
-    displayGrid();
+        item.addEventListener("mouseout", () => {
+            document.querySelectorAll(".grid-item").forEach(cell => {
+                cell.classList.remove("dimmed");
+            });
+        });
+    });
 });

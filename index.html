@@ -4,41 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador Preflop</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <div class="container">
-        <h1>Visualizador Preflop</h1>
-        <div class="form-group">
-            <label for="scenario">Selecciona el escenario:</label>
-            <select id="scenario">
-                <option value="rfi">Raise First In (RFI)</option>
-                <option value="facing-rfi">Facing RFI</option>
-                <option value="rfi-vs-3bet">RFI vs 3-bet</option>
-            </select>
-        </div>
-        <div class="form-group" id="positions-group">
-            <!-- Dynamic content will be added here -->
-        </div>
-        <button id="show-chart">Mostrar Gráfico</button>
-        <div id="chart-container">
-            <!-- Chart will be displayed here -->
-            <div class="header">Open Raise</div>
-            <div class="principal">
-                <div class="grid-container">
-                <!-- Grid items will be added dynamically -->
-                </div>
-                <div class="legend">
-                    <div class="legend-item" data-range="utg"><div class="box utg"></div> UTG</div>
-                    <div class="legend-item" data-range="utg1"><div class="box utg1"></div> UTG+1</div>
-                    <div class="legend-item" data-range="mp"><div class="box mp"></div> MP</div>
-                    <div class="legend-item" data-range="mp1"><div class="box mp1"></div> MP+1</div>
-                    <div class="legend-item" data-range="hj"><div class="box hj"></div> HJ</div>
-                    <div class="legend-item" data-range="co"><div class="box co"></div> CO</div>
-                    <div class="legend-item" data-range="btn"><div class="box btn"></div> BTN</div>
-                </div>
+        <div class="header">Open Raise<a href="smallblind.html">Small Blind</a></div>
+        <div class="principal">
+            <div class="grid-container">
+            <!-- Add your grid items here -->
             </div>
-        </div>
+            <div class="legend">
+                <div class="legend-item" data-range="utg"><div class="box utg"></div> UTG</div>
+                <div class="legend-item" data-range="utg1"><div class="box utg1"></div> UTG+1</div>
+                <div class="legend-item" data-range="mp"><div class="box mp"></div> MP</div>
+                <div class="legend-item" data-range="mp1"><div class="box mp1"></div> MP+1</div>
+                <div class="legend-item" data-range="hj"><div class="box hj"></div> HJ</div>
+                <div class="legend-item" data-range="co"><div class="box co"></div> CO</div>
+                <div class="legend-item" data-range="btn"><div class="box btn"></div> BTN</div>
+            </div>
+        </div>        
     </div>
     <script src="script.js"></script>
 </body>

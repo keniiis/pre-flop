@@ -1,0 +1,13 @@
+.legend-sb {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.grid-container-sb {
+    display: grid;
+    grid-template-columns: repeat(13, 50px);
+    grid-gap: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
